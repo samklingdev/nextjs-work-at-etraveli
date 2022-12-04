@@ -1,9 +1,11 @@
 name: Playwright Tests
 on:
- push:
-   branches: [ main ]
- pull_request:
-   branches: [ main ]
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test_setup:
@@ -12,8 +14,8 @@ jobs:
     outputs:
       preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     steps:
-      - name: Wait for Vercel preview deployment to be ready
-        uses: patrickedqvist/wait-for-vercel-preview@master
+      - name: Wait for Vercel Preview
+        uses: patrickedqvist/wait-for-vercel-preview@v1.2.0
         id: waitForVercelPreviewDeployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -28,7 +30,7 @@ jobs:
         uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "16"
       - run: npm ci
       - run: npx playwright install --with-deps
       - name: Run tests

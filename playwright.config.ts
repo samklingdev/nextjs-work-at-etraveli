@@ -11,6 +11,10 @@ import { devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
+	webServer: {
+		command: 'npm run start',
+		url: 'http://localhost:3000',
+	},
 	testDir: './e2e',
 	/* Maximum time one test can run for. */
 	timeout: 30 * 1000,
@@ -33,7 +37,6 @@ const config: PlaywrightTestConfig = {
 	reporter: 'html',
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
-		baseURL: process.env.PLAYWRIGHT_TEST_BASE_URL || 'http://localhost:3000',
 		/* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
 		actionTimeout: 0,
 		/* Base URL to use in actions like `await page.goto('/')`. */
