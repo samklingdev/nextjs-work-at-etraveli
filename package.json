@@ -8,8 +8,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"test": "jest --watch",
-		"test:c": "jest --collectCoverage",
-		"test:pw": "playwright test"
+		"test:e2e": "playwright test"
 	},
 	"dependencies": {
 		"@headlessui/react": "^1.7.4",

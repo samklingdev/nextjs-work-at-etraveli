@@ -4,13 +4,13 @@ export interface Movie {
 	episodeId: number;
 	director: string;
 	releaseDate: string;
-	averageRating: number | null;
-	ratings: Rating[] | null;
-	boxOffice: string | null;
-	runtime: string | null;
+	averageRating?: number;
+	ratings?: Rating[];
+	boxOffice?: string;
+	runtime?: string;
 	openingCrawl: string;
-	poster: string | null;
-	genre: string | null;
+	poster?: string;
+	genre?: string;
 }
 
 interface Rating {

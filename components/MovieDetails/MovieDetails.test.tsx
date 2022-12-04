@@ -43,4 +43,12 @@ describe('MovieDetails', () => {
 		expect(screen.getByText(movie.ratings[1].value, { exact: false })).toBeInTheDocument();
 		expect(screen.getByText(movie.ratings[2].value, { exact: false })).toBeInTheDocument();
 	});
+	it('should render image placeholder if no poster', () => {
+		const movieWithoutPoster = {
+			...movie,
+			poster: undefined,
+		};
+		render(<MovieDetails movie={movieWithoutPoster} />);
+		expect(screen.getByRole('img')).toHaveAttribute('src', '/no-image.svg');
+	});
 });

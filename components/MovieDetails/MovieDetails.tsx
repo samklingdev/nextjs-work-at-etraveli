@@ -9,15 +9,13 @@ interface IMovieDetailsProps {
 const TOTAL_STARS = 10;
 
 export default function MovieDetails({ movie }: IMovieDetailsProps) {
-	// const hasRating = Boolean(movie.averageRating) && movie.ratings && movie.ratings.length > 0; Why is typescript complaining if I use this instead of explicit typing each in the guard?
-
 	return (
 		<article className="flex flex-col w-full gap-4 p-3">
 			<header>
 				<h1 className="text-2xl font-semibold">{movie.title}</h1>
 			</header>
 			<section className="flex flex-row items-start justify-start w-full gap-4">
-				<img className="max-w-[50%] max-h-[20rem]" src={movie.poster} alt={`poster for ${movie.title}`} />
+				<img className="max-w-[50%] max-h-[20rem]" src={movie.poster || '/no-image.svg'} alt={`poster for ${movie.title}`} />
 				<ul className="flex flex-col gap-2 text-sm sm:text-base sm:gap-4">
 					<li>
 						<strong className="block font-semibold">Released</strong>
