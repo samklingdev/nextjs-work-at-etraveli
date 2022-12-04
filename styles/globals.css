@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html,
+#__next {
+	width: 100%;
+	height: 100%;
+}
+
+@layer components {
+	.divide-y,
+	.divide-x,
+	.divide,
+	.border,
+	.border-r,
+	.border-l,
+	.border-t,
+	.border-b,
+	.border-x,
+	.border-y {
+		@apply border-neutral-200 dark:border-neutral-800;
+	}
+}
