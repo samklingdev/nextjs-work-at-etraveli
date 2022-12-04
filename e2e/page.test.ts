@@ -1,20 +1,20 @@
 import { test, expect } from '@playwright/test';
 
 test('should show No movie selected if no slug', async ({ page }) => {
-	await page.goto('http://localhost:3000/');
+	await page.goto('/');
 	const text = page.getByText('No movie selected');
 	expect(text).toBeTruthy();
 });
 
 test('should show movie with slug', async ({ page }) => {
-	await page.goto('http://localhost:3000/star-wars-episode-i-the-phantom-menace');
+	await page.goto('/star-wars-episode-i-the-phantom-menace');
 	await page.waitForSelector('text=Star Wars: Episode I - The Phantom Menace');
 	const heading = page.getByRole('heading', { name: 'Star Wars: Episode I - The Phantom Menace' });
 	expect(heading).toBeTruthy();
 });
 
 test('sort by episode should work', async ({ page }) => {
-	await page.goto('http://localhost:3000');
+	await page.goto('/');
 	await page.getByRole('button', { name: 'Sort by' }).click();
 	await page.getByRole('option', { name: 'Episode' }).click();
 
@@ -25,7 +25,7 @@ test('sort by episode should work', async ({ page }) => {
 });
 
 test('sort by Release Date should work', async ({ page }) => {
-	await page.goto('http://localhost:3000');
+	await page.goto('/');
 	await page.getByRole('button', { name: 'Sort by' }).click();
 	await page.getByRole('option', { name: 'Release Date' }).click();
 
@@ -36,7 +36,7 @@ test('sort by Release Date should work', async ({ page }) => {
 });
 
 test('sort by Rating should work', async ({ page }) => {
-	await page.goto('http://localhost:3000');
+	await page.goto('/');
 	await page.getByRole('button', { name: 'Sort by' }).click();
 	await page.getByRole('option', { name: 'Average Rating' }).click();
 
@@ -47,7 +47,7 @@ test('sort by Rating should work', async ({ page }) => {
 });
 
 test('filter should work', async ({ page }) => {
-	await page.goto('http://localhost:3000');
+	await page.goto('/');
 	await page.getByPlaceholder('Type to filter...').fill('the');
 
 	await expect(page.getByRole('row')).toHaveCount(6);
@@ -57,13 +57,13 @@ test('filter should work', async ({ page }) => {
 });
 
 test('should show no movies found if filtered search returns no movies.', async ({ page }) => {
-	await page.goto('http://localhost:3000');
+	await page.goto('/');
 	await page.getByPlaceholder('Type to filter...').fill('Giana Sisters Return');
 	await expect(page.getByRole('row', { name: 'No movies found' })).toBeVisible();
 });
 
 test('should display movie details on selecting movie', async ({ page }) => {
-	await page.goto('http://localhost:3000');
+	await page.goto('/');
 	await page.getByRole('cell', { name: 'Star Wars: Episode I - The Phantom Menace' }).click();
 
 	expect(page.getByRole('heading', { name: 'Star Wars: Episode I - The Phantom Menace' })).toBeTruthy();
