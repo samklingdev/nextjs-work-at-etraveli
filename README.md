@@ -5,7 +5,7 @@ https://github.com/kaybert/work.at.etraveli
 
 Clone repo
 ```bash
-git clone ..
+git clone https://github.com/samklingdev/nextjs-work-at-etraveli.git
 ```
 Install dependencies
 ```bash
@@ -16,6 +16,8 @@ Run the development server:
 npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+Also hosted on vercel https://nextjs-work-at-etraveli.vercel.app/
 
 ## Notes
 
