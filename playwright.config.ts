@@ -11,10 +11,6 @@ import { devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-	webServer: {
-		command: 'npm run start',
-		url: 'http://localhost:3000',
-	},
 	testDir: './e2e',
 	/* Maximum time one test can run for. */
 	timeout: 30 * 1000,
