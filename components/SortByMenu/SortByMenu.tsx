@@ -12,7 +12,7 @@ export default function SortByMenu({ options, value, onChange }: ISortByMenuProp
 	return (
 		<Listbox value={value} onChange={onChange}>
 			<div className="text-gray-700">
-				<Listbox.Button className="relative w-full px-2 py-1.5 text-left text-gray-100 rounded-md md:text-gray-700 md:bg-white ">
+				<Listbox.Button className="relative w-full px-2 py-1.5 text-left text-gray-100 rounded-md md:text-gray-700 md:bg-white" aria-label="Sort by button">
 					<span className="hidden md:block whitespace-nowrap">Sort by</span>
 					<BarsArrowDownIcon className="w-6 h-6 md:hidden" title="Sort by" />
 				</Listbox.Button>
