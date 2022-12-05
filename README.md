@@ -50,13 +50,6 @@ Since no design for mobile were included I took the liberty to make some changes
 * Added sr-only or labels where it could be hard for visual impairments or learning disabilities to understand otherwise.
 * MovieTable added keyboard shortcuts space and enter to select movie and setting aria-selected on select.
 
-### SEO
-* Only one H1 tag per page for SEO reasons.
-* Unique description for each page for SEO. Usually, but not always, this is what search engine will present in their search result.
-
-### CSS
-Tailwindcss
-
 ### Testing
 Unit testing with jest, react testing library
 e2e with playwright
