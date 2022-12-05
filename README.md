@@ -51,6 +51,6 @@ Since no design for mobile were included I took the liberty to make some changes
 * MovieTable added keyboard shortcuts space and enter to select movie and setting aria-selected on select.
 
 ### Testing
-Unit testing with jest, react testing library
-e2e with playwright
-In isolation, just e2e testing would probably have been enough.
+* Unit testing with jest, react testing library
+* e2e with playwright
+* In isolation, just e2e testing would probably have been enough.
