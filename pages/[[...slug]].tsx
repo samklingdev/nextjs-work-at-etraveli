@@ -93,20 +93,20 @@ export const getServerSideProps: GetServerSideProps<IHomeProps> = async ({ req, 
 	res.setHeader('Cache-Control', 'public, s-maxage=3600');
 
 	// real api call
-	// const swapiRes = await fetch(`http://swapi.dev/films`);
-	// const swapi: SwapiFilmResponse = await swapiRes.json();
-	const swapi: SwapiFilmResponse = require('./api/swapi.json');
+	const swapiRes = await fetch(`https://swapi.dev/api/films`);
+	const swapi: SwapiFilmResponse = await swapiRes.json();
+	// const swapi: SwapiFilmResponse = require('./api/swapi.json');
 
-	// const omdb = await Promise.all(
-	// 	swapi.results.map(async (swapiMovie) => {
-	// 		const swapiMovieYear = new Date(swapiMovie.release_date).getFullYear();
-	// 		const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&t=${swapiMovie.title}&y=${swapiMovieYear}`);
-	// 		const omdb: OMDBResponse = await res.json();
-	// 		return omdb;
-	// 	})
-	// );
+	const omdb = await Promise.all(
+		swapi.results.map(async (swapiMovie) => {
+			const swapiMovieYear = new Date(swapiMovie.release_date).getFullYear();
+			const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&t=${swapiMovie.title}&y=${swapiMovieYear}`);
+			const omdb: OMDBResponse = await res.json();
+			return omdb;
+		})
+	);
 
-	const omdb: OMDBResponse[] = require('./api/omdb.json');
+	// const omdb: OMDBResponse[] = require('./api/omdb.json');
 
 	const combined = swapi.results.map((swapiMovie) => {
 		const title = `Star Wars: Episode ${toRomanNumerals(swapiMovie.episode_id)} - ${swapiMovie.title}`;
