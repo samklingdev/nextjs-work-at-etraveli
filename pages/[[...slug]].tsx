@@ -86,9 +86,6 @@ export default function Home({ movies }: IHomeProps) {
 }
 
 export const getServerSideProps: GetServerSideProps<IHomeProps> = async ({ req, res }) => {
-	// This is not the right way of doing it!, https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props#getserversideprops-or-api-routes
-	// We should call the external API directly from getServerSiteProps, but since the swapi.dev external api was down, I'm using this workaround.
-
 	// lets cache the response for 1 hour. No need to fetch the data every time when the only thing that changes is the ratings.
 	res.setHeader('Cache-Control', 'public, s-maxage=3600');
 
@@ -105,7 +102,6 @@ export const getServerSideProps: GetServerSideProps<IHomeProps> = async ({ req, 
 			return omdb;
 		})
 	);
-
 	// const omdb: OMDBResponse[] = require('./api/omdb.json');
 
 	const combined = swapi.results.map((swapiMovie) => {
